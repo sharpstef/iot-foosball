@@ -1,0 +1,31 @@
+<svg width="683" height="452" xmlns="http://www.w3.org/2000/svg">
+ <metadata id="metadata2237">image/svg+xml</metadata>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="454" width="685" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g transform="rotate(90, 339.723, 226.521)" opacity="0.65" id="g2174">
+   <rect fill="#00AED1" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" id="rect7516" width="456.05264" height="693.20001" x="111.696992" y="-120.078976"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" d="m125.233009,-95.689651l0,638.680252l429.514549,0l0,-638.835258l-429.514549,0.155006z" id="path2239"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" d="m218.886581,-95.339172l0,98.699524l242.207413,0l0,-99.165291" id="path3116"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" d="m285.342224,-95.804939l0,33.000759l109.296112,0l0,-33.000759" id="path3118"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" id="path3120" d="m218.886581,542.269226l0,-98.699524l242.207413,0l0,99.165283"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" id="path3122" d="m285.342224,542.734985l0,-33.000732l109.296112,0l0,33.000732"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" d="m125.110382,223.572968l429.470428,0" id="path3124"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" stroke-dashoffset="0" id="path3142" d="m394.779541,220.549469a54.789249,54.789249 0 1 1 -109.578491,0a54.789249,54.789249 0 1 1 109.578491,0z"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" d="m318.073792,543.90564l0,14.695435l43.833008,0l0,-14.948792" id="path3994"/>
+   <path fill="none" fill-opacity="0.75" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" id="path4869" d="m318.073792,-96.752373l0,-14.695435l43.833008,0l0,14.948807"/>
+   <path fill="#000000" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" id="path5748" d="m341.794983,475.564636a1.80467,1.80467 0 1 1 -3.609375,0a1.80467,1.80467 0 1 1 3.609375,0z"/>
+   <path fill="#000000" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" d="m341.794983,-28.562653a1.80467,1.80467 0 1 1 -3.609375,0a1.80467,1.80467 0 1 1 3.609375,0z" id="path5750"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" id="path5756" d="m125.556618,537.545593a5.38408,5.38408 0 0 1 5.130547,5.187805"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" d="m126.144218,-89.543274a5.38408,-5.38408 0 0 1 5.130547,-5.187805" id="path6631"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" id="path6633" d="m553.783813,-89.716187a-5.38408,-5.38408 0 0 1 -5.130615,-5.187805"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" stroke-dashoffset="0" d="m553.820862,536.889465a-5.38408,5.38408 0 0 1 -5.130554,5.187805" id="path6635"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" stroke-dashoffset="0" d="m295.449036,443.400269a54.789249,54.789249 0 0 1 89.08252,0.138916" id="path6637"/>
+   <path fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-width="3" stroke-miterlimit="4" stroke-dashoffset="0" id="path6641" d="m295.449036,3.600616a54.789249,-54.789249 0 0 1 89.08252,-0.138916"/>
+  </g>
+ </g>
+</svg>

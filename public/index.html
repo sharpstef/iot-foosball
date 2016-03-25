@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>FoosBuzz | Powered by Bluemix</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/game.css" />
+<link rel="stylesheet" href="assets/css/jquery.dataTables.min.css" />
+<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+<body>
+
+<!-- Scrolling Navigation Bar -->
+<section id="scrollnav" class="alt">
+  <h1><a href="index.html">FoosBuzz</a></h1>
+  <nav id="nav">
+    <ul>
+      <li><a href="https://console.ng.bluemix.net/" class="icon fa-code">Bluemix</a></li>
+      <li><a href="#tweets" class="scrolly icon fa-twitter">Live Tweets</a></li>
+      <li><a href="#league" class="scrolly icon fa-trophy">Leaderboard</a></li>
+    </ul>
+  </nav>
+</section>
+
+<!-- Header -->
+<section id="header">
+  <div class="inner"> <span class="icon major fa-soccer-ball-o"></span>
+    <h1>FoosBuzz</h1>
+    <h3>An Internet of Things Foosball Game</h3>
+    <p>Powered by Bluemix, Raspberry Pi, Node-RED, Cloudant, and Node.js</p>
+    <ul class="actions">
+      <li><a href="#game" class="button scrolly icon fa-soccer-ball-o">Play/Watch</a></li>
+      <li><a href="#league" class="button scrolly icon fa-trophy">League</a></li>
+      <li><a href="#tweets" class="button scrolly icon fa-twitter">Live Tweets</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Game -->
+<section id="game" class="main">
+  <div class="container">
+    <div class="row 100%"> 
+      <!-- Player One Block -->
+      <div class="4u 12u$(medium) player">
+        <div id="teamOne"> <img class="avatar" id="imageOne" src="images/player.svg" />
+          <h2 id="nameOne">Captain One</h2>
+          <a id="LoginButtonOne" class="button special icon fa-twitter" href="/login1">Login</a>
+          <div id="details">
+            <h3 id="probVal"><span id="probTeamOne">0.00%</span><br />
+            <strong>Chance Of Winning</strong></h3>
+          </div>
+        </div>
+      </div>
+      <!-- Score Block -->
+      <div class="4u 12u$(medium)" id="scoreboard">
+      <h3>Game Score</h3>
+      <h2 id="ScoreOne" class="score">0</h2>
+      <h2 id="ScoreTwo" class+"score">0</h2>
+      </div>
+      <!-- Player Two Block -->
+      <div class="4u 12u$(medium) player">
+        <div id="teamTwo"> <img class="avatar" id="imageTwo" src="images/player.svg" />
+          <h2 id="nameTwo">Captain Two</h2>
+          <a id="LoginButtonTwo" class="button special icon fa-twitter" href="/login2">Login</a>
+          <div id="details">
+            <h3 id="probVal"><span id="probTeamTwo">0.00%</span><br />
+            <strong>Chance Of Winning</strong></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row 100%">
+        <div class="6u 12u$(medium)">
+            <button type="button" class="button special" id="rematch" value="Rematch">Rematch</button>   
+        </div>
+        <div class="6u 12u$(medium)">
+            <button type="button" class="button special" id="end" value="End Game">End Game</button>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tweets -->
+<section id="tweets" class="main style2 special">
+  <div class="container">
+    <header class="major">
+      <h2>Game Feed</h2>
+    </header>
+  <div id="timeline" class="timeline"> </div>
+    </div>
+</section>
+
+<!-- League -->
+<section id="league" class="main style1 special">
+  <div class="container">
+    <header class="major">
+      <h2>FoosBuzz League</h2>
+    </header>
+    			<div class="container" id="index">
+				GP = Goals Played | W = Wins | L = Losses | GF:GA = Goals For : Goals Against
+				| GD = Goal Difference | PTS = Points || Win = +3 Points | Loss = -2 Points
+                <br /><br />
+			</div>
+		</div>
+	</div> 
+	<div class="container">
+		<div class="table-responsive-fluid">
+			<table id="leaguetable" class="display table" id="table_id">
+				<thead>
+				<tr>
+					<th id ="center">Photo</th>
+					<th id ="center">User</th>
+					<th id ="center">Twitter</th>
+					<th id ="center">GP</th>
+					<th id ="center">W</th>
+ 					<th id ="center">L</th>
+ 					<th id ="center">GF:GA</th>
+					<th id ="center">GD</th>
+					<th id ="center">PTS</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+  </div>
+</section>
+
+<!-- Scripts --> 
+<script src="assets/js/jquery.min.js"></script> 
+<script src="assets/js/jquery.dropotron.min.js"></script> 
+<script src="assets/js/jquery.scrollgress.min.js"></script> 
+<script src="assets/js/jquery.scrolly.min.js"></script> 
+<script src="assets/js/skel.min.js"></script> 
+<script src="assets/js/util.js"></script> 
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--> 
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/timeline.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/game.js"></script>
+</body>
+</html>
