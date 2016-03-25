@@ -8,3 +8,8 @@ applications:
   disk_quota: 1024M
   services:
   - foosbuzz-cloudantNoSQLDB
+
+declared-services:
+  foosbuzz-cloudantNoSQLDB:
+    label: cloudantNoSQLDB
+    plan:  Shared

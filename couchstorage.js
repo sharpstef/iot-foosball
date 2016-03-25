@@ -75,6 +75,63 @@ var couchstorage = {
         var couchDb = nano(settings.couchUrl);
         appname = settings.couchAppname || require('os').hostname();
         var dbname = settings.couchDb||"nodered";
+		var dbgames = settings.couchDb||"games";
+        var dbplayers = settings.couchDB||"players";
+        
+        //Set data for default files in games database
+        var totalGames = {
+              "_id": "totalGames",
+              "totalGames": 1,
+              "winsTeamOne": 0,
+              "winsTeamTwo": 0,
+              "totTeamOne": 0,
+              "totTeamTwo": 0
+        };
+        
+        var gameOne = {
+            "_id": "1",
+            "userTeamOne": "Anonymous",
+            "idTeamOne": null,
+            "userTeamOnePhoto": null,
+            "userTeamTwo": "Incognito",
+            "idTeamTwo": null,
+            "userTeamTwoPhoto": null,
+            "goalsTeamOne": 0,
+            "goalsTeamTwo": 0,
+            "startTime": null,
+            "endTime": null,
+            "lastBall": null,
+            "currentBall": null,
+            "gameActive": false
+            };
+            
+        //Create the games db if it doesn't exist and populate with default game files
+        couchDb.db.get(dbgames,function(err,body) {
+                if (err) {
+                    couchDb.db.create(dbgames,function(err,body) {
+                        if (err) {
+                            console.log("Failed to create database: "+err);
+                        } else {
+                            var gameDB = couchDb.use(dbgames);
+                            gameDB.insert(totalGames);
+                            gameDB.insert(gameOne);
+                        }
+                    });
+                }
+        });
+                
+        //Create the players db if it doesn't exist 
+        couchDb.db.get(dbplayers,function(err,body) {
+                if (err) {
+                    couchDb.db.create(dbplayers,function(err,body) {
+                        if (err) {
+                            reject("Failed to create database: "+err);
+                        } else {
+                            console.log("Players database created.");
+                        }
+                    });
+                }
+         });
         
         return when.promise(function(resolve,reject) {
             couchDb.db.get(dbname,function(err,body) {
