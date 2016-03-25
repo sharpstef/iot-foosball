@@ -2,7 +2,7 @@ applications:
 - services:
   - foosbuzz-cloudantNoSQLDB
   - foosbuzz-textToSpeech
-  - foosbuzz-watsonIoT
+  - foosbuzz-IoT
   memory: 512M
   instances: 1
   domain: mybluemix.net
@@ -17,6 +17,6 @@ declared-services:
   foosbuzz-textToSpeech:
     label: text_to_speech 
     plan:  standard
-  foosbuzz-WatsonIoT:
+  foosbuzz-IoT:
     label: iotf-service
     plan:  iotf-service-free
