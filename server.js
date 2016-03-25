@@ -9,7 +9,7 @@
 *
 *       An IoT connected foosball table powered by Watson IoT, Cloudant, and Node-RED
 */
-
+/*eslint-env node */
 "use strict";  /* always for Node.JS, never global in the browser */
 
 // Set the modules
@@ -122,6 +122,16 @@ var settings = {
     mqttReconnectTime: 4000,
     serialReconnectTime: 4000,
     debugMaxLength: 1000,
+	
+	// Basic flow protection, password is password using bcrypt algorithim 
+	adminAuth: {
+        type: "credentials",
+        users: [{
+            username: "admin",
+            password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
+            permissions: "*"
+        }]
+    },
 
     // Add the bluemix-specific nodes in
     nodesDir: path.join(__dirname,"nodes"),
@@ -140,11 +150,16 @@ var settings = {
 };
 // Not used in embedded mode: uiHost, uiPort, httpAdminAuth, httpNodeAuth, httpStatic, httpStaticAuth, https
 
+// Check to see if Cloudant service exists
 settings.couchAppname = VCAP_APPLICATION['application_name'];
 
-
-var storageServiceName = process.env.NODE_RED_STORAGE_NAME || new RegExp("^"+settings.couchAppname+".cloudantNoSQLDB");
-var couchService = appEnv.getService(storageServiceName);
+if (process.env.VCAP_SERVICES) {
+// Running on Bluemix. Parse the port and host that we've been assigned.
+    var env = JSON.parse(process.env.VCAP_SERVICES);
+    console.log('VCAP_SERVICES: %s', process.env.VCAP_SERVICES);
+    // Also parse Cloudant settings.
+    var couchService = env['cloudantNoSQLDB'][0]['credentials'];    
+}
 
 if (!couchService) {
     console.log("Failed to find Cloudant service");
@@ -153,7 +168,7 @@ if (!couchService) {
     }
     throw new Error("No cloudant service found");
 }    
-settings.couchUrl = couchService.credentials.url;
+settings.couchUrl = couchService.url;
 
 // Initialise the runtime with a server and settings
 RED.init( httpServer, settings );
