@@ -10,3 +10,4 @@ this application in Bluemix, but you can easily run it in any environment with C
 2. [**Twitter App Credentials**](https://apps.twitter.com/) - You need to create an app with Twitter to use the Passport OAuth Login for users.
 3. [**Cloudant**](https://cloudant.com/) - noSQL database that stores the game and player data.  The game database should be populated with two initial files totalGames and 1 to avoid errors in gameplay. 
 
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://github.com/slkaczma/FoosBuzz)
