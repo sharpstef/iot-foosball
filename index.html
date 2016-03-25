@@ -139,15 +139,58 @@
 <h3>
 <a id="express-server-and-node-red" class="anchor" href="#express-server-and-node-red" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Express Server and Node-RED</h3>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<p>The Express server handles a minimal amount of processing to keep all of the app logic in Node-RED.  Therefore very few changes have to be made to the code to get it running for you.</p>
+
+<h4>
+<a id="serverjs" class="anchor" href="#serverjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>server.js</h4>
+
+<p>Create an app with Twitter using <a href="http://yourapproute.com/login/twitter/return">http://yourapproute.com/login/twitter/return</a> as the callback URL, replacing yourapproute.com with the URL for the root site of your application.  After you have the consumer key and token update passport.use and client.post in server.js.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Update the credentials with the information from your Twitter app </span>
+<span class="pl-smi">passport</span>.<span class="pl-en">use</span>(<span class="pl-k">new</span> <span class="pl-en">Strategy</span>({
+    consumerKey<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>TWITTER CONSUMER KEY<span class="pl-pds">"</span></span>,   <span class="pl-c">//CHANGE ME</span>
+    consumerSecret<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>TWITTER CONSUMER SECRET<span class="pl-pds">"</span></span>,  <span class="pl-c">//CHANGE ME</span>
+    callbackURL<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>http://yourwebsite.com/login/twitter/return<span class="pl-pds">"</span></span> <span class="pl-c">//CHANGE ME</span>
+  },
+  <span class="pl-k">function</span>(<span class="pl-smi">token</span>, <span class="pl-smi">tokenSecret</span>, <span class="pl-smi">player</span>, <span class="pl-smi">cb</span>) {
+
+    <span class="pl-c">// Grab the Twitter photo and strip out the minimizer  </span>
+    <span class="pl-k">var</span> photo <span class="pl-k">=</span> <span class="pl-smi">player</span>.<span class="pl-smi">photos</span>[<span class="pl-c1">0</span>].<span class="pl-c1">value</span>;
+    photo <span class="pl-k">=</span> <span class="pl-smi">photo</span>.<span class="pl-c1">replace</span>(<span class="pl-s"><span class="pl-pds">"</span>_normal<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>); 
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(photo);
+
+    <span class="pl-c">// Let Node-RED know there has been a successful login and send the profile data for further processing</span>
+    <span class="pl-k">var</span> args <span class="pl-k">=</span> {
+       data<span class="pl-k">:</span> {id<span class="pl-k">:</span><span class="pl-smi">player</span>.<span class="pl-c1">id</span>,handle<span class="pl-k">:</span><span class="pl-smi">player</span>.<span class="pl-smi">username</span>,name<span class="pl-k">:</span><span class="pl-smi">player</span>.<span class="pl-smi">displayName</span>,photo<span class="pl-k">:</span>photo,chosenTeam<span class="pl-k">:</span>team},
+       headers<span class="pl-k">:</span> { <span class="pl-s"><span class="pl-pds">"</span>Content-Type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>application/json<span class="pl-pds">"</span></span> }
+    };
+
+    <span class="pl-smi">client</span>.<span class="pl-en">post</span>(<span class="pl-s"><span class="pl-pds">"</span>http://yourwebsite.com/player<span class="pl-pds">"</span></span>, args, <span class="pl-k">function</span> (<span class="pl-smi">data</span>, <span class="pl-smi">response</span>) {  <span class="pl-c">//CHANGE ME</span>
+        <span class="pl-c">//console.log(data);</span>
+        <span class="pl-c">//console.log(response);</span>
+    });
+
+    <span class="pl-k">return</span> <span class="pl-en">cb</span>(<span class="pl-c1">null</span>, player);
+}));</pre></div>
+
+<h4>
+<a id="defaultsflowjson" class="anchor" href="#defaultsflowjson" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>defaults/flow.json</h4>
+
+<p>Upon deploy the app should create the flow for the foosball table, but if it doesn't, navigate to defaults/flow.json and import the JSON into Node-RED.</p>
 
 <h3>
 <a id="user-interface" class="anchor" href="#user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Interface</h3>
 
+<p>The only update to the user interface is for the colors assigned to each team.  Figure out the color for team 1 and team 2 and update public/assets/js/game.js with the correct labels. </p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// You will need to know which sensor maps to which team color.</span>
+<span class="pl-k">var</span> team1 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Yellow<span class="pl-pds">'</span></span>; <span class="pl-c">//TODO Change to match your Team One color</span>
+<span class="pl-k">var</span> team2 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Black<span class="pl-pds">'</span></span>; <span class="pl-c">//TODO Change to match your Team Two color</span></pre></div>
+
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Version two of this code is the collaboration of <a href="https://github.com/slkaczma" class="user-mention">@slkaczma</a> and <a href="https://github.com/odrodrig" class="user-mention">@odrodrig</a> for SXSW 2016. </p>
+<p>Version two of this code is the collaboration of <a href="https://github.com/slkaczma">Stefania Kaczmarczyk</a> and <a href="https://github.com/odrodrig">Oliver Rodriguez</a> for SXSW 2016. </p>
         </section>
 
         <aside id="sidebar">
