@@ -1,15 +1,22 @@
 applications:
-- path: .
+- services:
+  - foosbuzz-cloudantNoSQLDB
+  - foosbuzz-textToSpeech
+  - foosbuzz-watsonIoT
   memory: 512M
   instances: 1
   domain: mybluemix.net
   name: foosbuzz
   host: foosbuzz
   disk_quota: 1024M
-  services:
-  - foosbuzz-cloudantNoSQLDB
 
 declared-services:
   foosbuzz-cloudantNoSQLDB:
     label: cloudantNoSQLDB
     plan:  Shared
+  foosbuzz-textToSpeech:
+    label: text_to_speech 
+    plan:  standard
+  foosbuzz-WatsonIoT:
+    label: iotf-service
+    plan:  iotf-service-free
