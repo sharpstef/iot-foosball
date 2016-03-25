@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Foosbuzz by slkaczma</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Foosbuzz</h1>
-      <h2 class="project-tagline">A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</h2>
-      <a href="https://github.com/slkaczma/FoosBuzz" class="btn">View on GitHub</a>
-      <a href="https://github.com/slkaczma/FoosBuzz/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/slkaczma/FoosBuzz/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <section class="main-content">
-      <h3>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Foosbuzz by slkaczma</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Foosbuzz</h1>
+        <h2>A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</h2>
+        <a href="https://github.com/slkaczma/FoosBuzz" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h3>
 
 <p>This foosball table started out as something equivalent to a teaming project as we brought five people together in Austin, TX to retrofit an existing table with the sensors needed to track goals.  Version 2 of the code in this GitHub repo is a complete revamp and rethinking of that project to improve it's demo quality and appearance.  Feel free to let us know what you add to the app.  This is a very basic example of using Node-RED to work with an MQTT broker and a noSQL database.  </p>
@@ -44,35 +53,119 @@
 <h3>
 <a id="hardware-suggested-parts-and-tips-for-fitting-your-foosball-table" class="anchor" href="#hardware-suggested-parts-and-tips-for-fitting-your-foosball-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hardware: Suggested Parts and Tips for Fitting Your Foosball Table</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+<h4>
+<a id="the-basics" class="anchor" href="#the-basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Basics</h4>
+
+<ul>
+<li>Two Sets of Break Beam Sensors (Adafruit currently has the best option out there): <a href="Adafruit">https://www.adafruit.com/products/2168</a>
+</li>
+<li>A Raspberry Pi 3 Kit (You need the memory card, a mountable case, a power supply, and the Pi): <a href="http://www.amazon.com/CanaKit-Raspberry-Complete-Starter-Kit/dp/B01C6Q2GSY?ie=UTF8&amp;psc=1&amp;redirect=true&amp;ref_=ox_sc_act_title_1&amp;smid=A30ZYR2W3VAJ0A">CanaKit Raspberry Pi 3</a>
+</li>
+<li>An arcade push button (We purchased ours from Fry's): <a href="http://www.amazon.com/Arcade-Buttons-Multicade-Choice-Colors/dp/B016ZSCOJU/ref=sr_1_3?ie=UTF8&amp;qid=1458770680&amp;sr=8-3&amp;keywords=arcade+push+button+blue">http://www.amazon.com/Arcade-Buttons-Multicade-Choice-Colors/dp/B016ZSCOJU/ref=sr_1_3?ie=UTF8&amp;qid=1458770680&amp;sr=8-3&amp;keywords=arcade+push+button+blue</a>
+</li>
+</ul>
+
+<h4>
+<a id="wiring" class="anchor" href="#wiring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wiring</h4>
+
+<p>Now for the wiring particulars we have a few suggested routes, but do what works best with your skill set.</p>
+
+<p>You either can splice wires with female headers or solder headers onto the wires: <a href="http://www.amazon.com/TOOGOO-Female-Solderless-Flexible-Breadboard/dp/B00HUH9GOC/ref=sr_1_1?ie=UTF8&amp;qid=1458770795&amp;sr=8-1&amp;keywords=female+to+female+wires">Female Headers</a>.  We went the splicing route.</p>
+
+<p>You can use some cat 5/4 pair cable (ethernet cable) to splice the wires and make a common ground and power otherwise you'll need a lot of single strand copper wire.  We used four pair cable and kept a common ground and power with a separate data for each goal.  Total wiring is 5 ground, 4 power, and 3 data between the two sensors and the button.</p>
+
+<p>If you're familiar with wiring then skip the soldering and buy some heat shrink wire <a href="http://www.elecdirect.com/butt-splice-heat-shrink-terminals-crimp-shrink-12-10ga-25pk?gclid=CjwKEAjww9O3BRDp1tq0jIP023YSJAB0-j1S1JUElzwio4ogohwFYLGEh8nma9iw-keqoVBC6fMOsRoC2vXw_wcB">butts</a>. You can also twist the wires to splice then and apply electrical tape.  Or skip straight to soldering and stop reading these instructions. </p>
+
+<h4>
+<a id="the-table" class="anchor" href="#the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Table</h4>
+
+<p>Tables differ vastly across geography.  Our table is a <a href="http://www.foosballsoccer.com/cyclone-ii.html">Tornado Cyclone II</a>.  You can use whatever table you like with the caveat that you need a large enough return chute to place the sensors where the ball will both hit and not cause a large amount of sensor damage. </p>
+
+<h4>
+<a id="tips-for-installing" class="anchor" href="#tips-for-installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tips for Installing</h4>
+
+<ul>
+<li>Breadboard the sensors and button before you start installing.</li>
+<li>Set the python code on the Pi to autostart at boot so you can install it and leave it.</li>
+<li>If this is going to be used at a conference or other large event where lots of big cellphones are going to be clogging the air then secure a wired connection. </li>
+<li>Install the break beam sensors towards the floor of the chute and slightly back from the goal to ensure the ball crosses. </li>
+</ul>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="cloudant-and-starter-documents" class="anchor" href="#cloudant-and-starter-documents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloudant and Starter Documents</h3>
+
+<p>The app uses an instance of Cloudant running in <a href="https://console.ng.bluemix.net/catalog/">IBM Bluemix</a>.  The application also makes use of the Cloudant nodes so if you choose to deviate from Cloudant then you will need to recode the database sections. </p>
+
+<p>After deploying the application confirm that the players, games, and nodered databases exist.  Confirm that two documents exist in the games database with _ids of totalGames and 1. </p>
+
+<p>Example Game Document: </p>
+
+<pre><code>{
+  "_id": "1",
+  "_rev": "1-d6afc36ecfefdbb4af0b53211c1501ff",
+  "userTeamOne": "Anonymous",
+  "idTeamOne": null,
+  "userTeamOnePhoto": null,
+  "userTeamTwo": "Incognito",
+  "idTeamTwo": null,
+  "userTeamTwoPhoto": null,
+  "goalsTeamOne": 4,
+  "goalsTeamTwo": 5,
+  "startTime": "Fri Mar 11 2016 17:27:35 GMT+0000 (UTC)",
+  "endTime": "Fri Mar 11 2016 17:32:40 GMT+0000 (UTC)",
+  "lastBall": "2016-03-11T17:32:38.912Z",
+  "currentBall": "2016-03-11T17:32:40.534Z",
+  "gameActive": false
+}
+</code></pre>
+
+<p>Example Player Document: </p>
+
+<pre><code>{
+  "_id": "3061923715",
+  "_rev": "43-49357dbbf375e47cf1e1cd7826a377d5",
+  "handle": "Heres__Ollie",
+  "name": "Oliver Rodriguez",
+  "photo": "https://pbs.twimg.com/profile_images/573244648291885057/qXxCD2am.jpeg",
+  "gamesWon": 2,
+  "gamesLost": 0,
+  "pointsFor": 10,
+  "pointsAgainst": 6,
+  "lastPlayed": "Fri Mar 11 2016 21:12:41 GMT+0000 (UTC)",
+  "lastGame": "33"
+}
+</code></pre>
+
+<h3>
+<a id="express-server-and-node-red" class="anchor" href="#express-server-and-node-red" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Express Server and Node-RED</h3>
 
 <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
 
 <h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<a id="user-interface" class="anchor" href="#user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Interface</h3>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Version two of this code is the collaboration of <a href="https://github.com/slkaczma" class="user-mention">@slkaczma</a> and <a href="https://github.com/odrodrig" class="user-mention">@odrodrig</a> for SXSW 2016. </p>
+        </section>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+        <aside id="sidebar">
+          <a href="https://github.com/slkaczma/FoosBuzz/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/slkaczma/FoosBuzz/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+          <p class="repo-owner"><a href="https://github.com/slkaczma/FoosBuzz"></a> is maintained by <a href="https://github.com/slkaczma">slkaczma</a>.</p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/slkaczma/FoosBuzz">Foosbuzz</a> is maintained by <a href="https://github.com/slkaczma">slkaczma</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
   
   </body>
