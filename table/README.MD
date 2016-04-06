@@ -1,6 +1,8 @@
 ## Python Code for Raspberry Pi
+This code is very similar to Version 1 but uses breakbeam sensors instead of avoidance sensors. [Vance Morris](https://github.com/vmorris) kindly consulted on the configuration of the Pi as well as modifications for his original code. We love you Vance!
 
 ### table.py
+
 You need the ibmiotf libraries and the RPI.GPIO libraries
 ```
 sudo apt-get install python-dev python-rpi.gpio
