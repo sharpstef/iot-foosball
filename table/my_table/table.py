@@ -4,6 +4,7 @@
 import RPi.GPIO as GPIO
 import os,json
 import ibmiotf.application
+import ibmiotf.device
 import uuid
 from time import sleep
 import signal
@@ -14,7 +15,7 @@ import logging
 def main_function():
 
   # setup IoT Foundation information
-  configFilePath = "/etc/iotsample-raspberrypi/device.cfg"
+  configFilePath = "/home/pi/my_table/device.cfg"
   options = ibmiotf.application.ParseConfigFile(configFilePath)
   table = ibmiotf.application.Client(options)
   table.connect()
@@ -34,23 +35,21 @@ def main_function():
   def signal_handler(signal, frame):
     print '\nExiting.'
     GPIO.cleanup()
+    table.disconnect()
     sys.exit(0)
   signal.signal(signal.SIGINT, signal_handler)
 
   # setup callbacks for sensors
   def sensor1_callback(gpio_id):
-    table.Client.logger.info("Gooooal!! Sensor 1.")
-    table.send(1)
+    table.publishEvent("status",1)    
     sleep(2)
 
   def sensor2_callback(gpio_id):
-    table.Client.logger.info("Gooooal!! Sensor 2.")
-    table.send(2)
+    table.publishEvent("status",2)
     sleep(2)
 
   def button_callback(gpio_id):
-    table.Client.logger.info("RESET BUTTON PRESSED.")
-    table.send(0)
+    table.publishEvent("status",0)
 
   # Set up rising edge detection on pins
   GPIO.add_event_detect(inputPin1, GPIO.RISING, callback=sensor1_callback, bouncetime=1000)
@@ -59,3 +58,5 @@ def main_function():
 
 if __name__ == "__main__":
   main_function()
+
+
