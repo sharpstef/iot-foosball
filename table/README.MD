@@ -14,6 +14,18 @@ table.py must reside in /home/pi/my_table for the service file to work
 sudo mkdir /home/pi/my_table
 ```
 
+Update the credentials in table.py with your device credentials for the Watson IoT Foundation:
+```python
+# setup IoT Foundation information
+# replace with your credentials
+org = "ORG"
+type = "table"
+id = "ID"
+method="token"
+token="AUTH-TOKEN"  
+```
+
+
 ### pytable.service
 To start the python code when the Raspberry Pi starts, add the pytable.service file to /lib/systemd/system 
 
