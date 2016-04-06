@@ -13,11 +13,12 @@ import sys
 import logging
 
 # setup IoT Foundation information
-org = "cgmncc"
+# replace with your credentials
+org = "ORG"
 type = "table"
-id = "austinrasppi"
+id = "ID"
 method="token"
-token="Oi2Ieq&V985Fy1kSsY"  
+token="AUTH-TOKEN"  
 
 # setup sensor input pins
 inputPin1 = 11 #Board 11
