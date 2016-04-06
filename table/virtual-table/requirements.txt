@@ -1,0 +1,5 @@
+Flask==0.10.1
+httplib2==0.9.1
+ibmiotf==0.0.10
+logging==0.4.9.6
+paho-mqtt==1.1
