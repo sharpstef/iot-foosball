@@ -1,0 +1,11 @@
+[Unit]
+Description=Start python code for sending sensor data to IoT Foundation
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /home/pi/my_table/table.py
+
+[Install]
+WantedBy=multi-user.target
