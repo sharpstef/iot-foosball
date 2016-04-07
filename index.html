@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Foosbuzz by slkaczma</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Foosbuzz</h1>
-      <h2 class="project-tagline">A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</h2>
-      <a href="https://github.com/slkaczma/iot-foosball" class="btn">View on GitHub</a>
-      <a href="https://github.com/slkaczma/iot-foosball/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/slkaczma/iot-foosball/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <section class="main-content">
-      <h2>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Foosbuzz by slkaczma</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Foosbuzz</h1>
+        <h2>A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</h2>
+        <a href="https://github.com/slkaczma/iot-foosball" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>This foosball table started out as something equivalent to a teaming project as we brought five people together in Austin, TX to retrofit an existing table with the sensors needed to track goals.  Version 2 of the code in this GitHub repo is a complete revamp and rethinking of that project to improve it's demo quality and appearance.  Feel free to let us know what you add to the app.  This is a very basic example of using Node-RED to work with an MQTT broker and a noSQL database.  </p>
@@ -184,11 +193,62 @@
 
 <p>The app deploys an instance of the IoT Foundation service.  You will need to run the following python code on your device and make sure it connects.  Update the blue Data from Table node with the correct credentials for your device and the service. </p>
 
-<h4>
-<a id="mainpy" class="anchor" href="#mainpy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>main.py</h4>
+<h3>
+<a id="raspberry-pi-configuration" class="anchor" href="#raspberry-pi-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Raspberry Pi Configuration</h3>
 
-<h5>
-<a id="data-from-table-node" class="anchor" href="#data-from-table-node" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data from Table node</h5>
+<p>This code is very similar to Version 1 but uses breakbeam sensors instead of avoidance sensors. <a href="https://github.com/vmorris">Vance Morris</a> kindly consulted on the configuration of the Pi as well as modifications for his original code. We love you Vance!</p>
+
+<h4>
+<a id="tablepy" class="anchor" href="#tablepy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>table.py</h4>
+
+<p>You need the ibmiotf libraries and the RPI.GPIO libraries</p>
+
+<pre><code>sudo apt-get install python-dev python-rpi.gpio
+</code></pre>
+
+<pre><code>pip install ibmiotf 
+</code></pre>
+
+<p>table.py must reside in /home/pi/my_table for the service file to work</p>
+
+<pre><code>sudo mkdir /home/pi/my_table
+</code></pre>
+
+<p>Update the credentials in table.py with your device credentials for the Watson IoT Foundation:</p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-c"># setup IoT Foundation information</span>
+<span class="pl-c"># replace with your credentials</span>
+org <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>ORG<span class="pl-pds">"</span></span>
+<span class="pl-c1">type</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span>
+<span class="pl-c1">id</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>ID<span class="pl-pds">"</span></span>
+method<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>token<span class="pl-pds">"</span></span>
+token<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>AUTH-TOKEN<span class="pl-pds">"</span></span>  </pre></div>
+
+<h4>
+<a id="pytableservice" class="anchor" href="#pytableservice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pytable.service</h4>
+
+<p>To start the python code when the Raspberry Pi starts, add the pytable.service file to /lib/systemd/system </p>
+
+<p>Update permissions for the file:</p>
+
+<pre><code>sudo chmod 644 /lib/systemd/system/pytable.service
+</code></pre>
+
+<p>Configure systemd:</p>
+
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable pytable.service
+</code></pre>
+
+<p>Reboot:</p>
+
+<pre><code>sudo reboot
+</code></pre>
+
+<p>Confirm:</p>
+
+<pre><code>sudo systemctl status pytable.sevice
+</code></pre>
 
 <h3>
 <a id="user-interface" class="anchor" href="#user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Interface</h3>
@@ -203,14 +263,24 @@
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>Version two of this code is the collaboration of <a href="https://github.com/slkaczma">Stefania Kaczmarczyk</a> and <a href="https://github.com/odrodrig">Oliver Rodriguez</a> for SXSW 2016. </p>
+        </section>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/slkaczma/iot-foosball">Foosbuzz</a> is maintained by <a href="https://github.com/slkaczma">slkaczma</a>.</span>
+        <aside id="sidebar">
+          <a href="https://github.com/slkaczma/iot-foosball/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/slkaczma/iot-foosball/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+          <p class="repo-owner"><a href="https://github.com/slkaczma/iot-foosball"></a> is maintained by <a href="https://github.com/slkaczma">slkaczma</a>.</p>
 
-    </section>
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
 
   
   </body>
