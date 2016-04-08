@@ -1,34 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Foosbuzz by slkaczma</title>
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Foosbuzz by slkaczma</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Foosbuzz</h1>
-        <h2>A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</h2>
-        <a href="https://github.com/slkaczma/iot-foosball" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+        <p>A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED</p>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h2>
+        <p class="view"><a href="https://github.com/slkaczma/iot-foosball">View the Project on GitHub <small>slkaczma/iot-foosball</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/slkaczma/iot-foosball/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/slkaczma/iot-foosball/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/slkaczma/iot-foosball">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
 <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>This foosball table started out as something equivalent to a teaming project as we brought five people together in Austin, TX to retrofit an existing table with the sensors needed to track goals.  Version 2 of the code in this GitHub repo is a complete revamp and rethinking of that project to improve it's demo quality and appearance.  Feel free to let us know what you add to the app.  This is a very basic example of using Node-RED to work with an MQTT broker and a noSQL database.  </p>
@@ -80,6 +80,11 @@
 <a id="the-table" class="anchor" href="#the-table" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Table</h4>
 
 <p>Tables differ vastly across geography.  Our table is a <a href="http://www.foosballsoccer.com/cyclone-ii.html">Tornado Cyclone II</a>.  You can use whatever table you like with the caveat that you need a large enough return chute to place the sensors where the ball will both hit and not cause a large amount of sensor damage. </p>
+
+<h4>
+<a id="watson" class="anchor" href="#watson" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Watson</h4>
+
+<p>The application has several canned taunts as players work through the game.  This audio plays through Firefox or Chrome.  If you want the players to hear the audio then you will need a speaker for your laptop or other web enabled device.</p>
 
 <h4>
 <a id="tips-for-installing" class="anchor" href="#tips-for-installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tips for Installing</h4>
@@ -193,6 +198,13 @@
 
 <p>The app deploys an instance of the IoT Foundation service.  You will need to run the following python code on your device and make sure it connects.  Update the blue Data from Table node with the correct credentials for your device and the service. </p>
 
+<h4>
+<a id="watson-text-to-speech" class="anchor" href="#watson-text-to-speech" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Watson Text to Speech</h4>
+
+<p>Open the Watson Talks subflow and verify the credentials in the green Text to Speech node.  If no credentials are present then you will need to look up the credentials for your service.</p>
+
+<p>You can access the Watson socket audio at /watson to hear taunts as players battle it out. </p>
+
 <h3>
 <a id="raspberry-pi-configuration" class="anchor" href="#raspberry-pi-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Raspberry Pi Configuration</h3>
 
@@ -263,25 +275,13 @@ sudo systemctl enable pytable.service
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>Version two of this code is the collaboration of <a href="https://github.com/slkaczma">Stefania Kaczmarczyk</a> and <a href="https://github.com/odrodrig">Oliver Rodriguez</a> for SXSW 2016. </p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/slkaczma/iot-foosball/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/slkaczma/iot-foosball/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/slkaczma/iot-foosball"></a> is maintained by <a href="https://github.com/slkaczma">slkaczma</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/slkaczma">slkaczma</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-
-  
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
