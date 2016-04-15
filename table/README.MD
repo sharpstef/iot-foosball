@@ -49,5 +49,5 @@ sudo reboot
 
 Confirm:
 ```
-sudo systemctl status pytable.sevice
+sudo systemctl status pytable.service
 ```
