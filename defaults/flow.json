@@ -1126,7 +1126,7 @@
       "type": "function",
       "z": "eb3b002.f14c5",
       "name": "Set Team Two as Shooter",
-      "func": "msg.payload = {\"type\":\"goal\",\"score_TeamOne\":global.get(\"goalsTeamOne\"),\"score_TeamTwo\":global.get(\"goalsTeamTwo\"),\"shooter\":global.get(\"userTeamTwo\"),\"team\":1};\nreturn msg;",
+      "func": "msg.payload = {\"type\":\"goal\",\"score_TeamOne\":global.get(\"goalsTeamOne\"),\"score_TeamTwo\":global.get(\"goalsTeamTwo\"),\"shooter\":global.get(\"userTeamTwo\"),\"team\":2};\nreturn msg;",
       "outputs": 1,
       "noerr": 0,
       "x": 2690,
@@ -1829,7 +1829,8 @@
       "y": 320,
       "wires": [
         [
-          "a0e6cd66.3eeab8"
+          "a0e6cd66.3eeab8",
+          "3718a0dc.4e7b8"
         ]
       ]
     },
@@ -1838,14 +1839,15 @@
       "type": "function",
       "z": "eb3b002.f14c5",
       "name": "Update Player 2",
-      "func": "msg.payload = global.get(\"idTeamTwo\");\n\nvar goals = global.get(\"goalsTeamTwo\");\nglobal.set(\"goals\",goals);\nvar goals2 = global.get(\"goalsTeamOne\");\nglobal.set(\"goals2\",goals2);\n\nvar time = global.get(\"endTime\");\nvar lastGame = global.get(\"gameID\").toString();\n\nif(goals>goals2){\n    global.set(\"winner\",true);\n}\nelse{\n    global.set(\"winner\",false);\n}\n\nreturn msg;",
+      "func": "msg.payload = global.get(\"idTeamTwo\");\n\nvar goals = global.get(\"goalsTeamOne\");\nglobal.set(\"goals\",goals);\nvar goals2 = global.get(\"goalsTeamTwo\");\nglobal.set(\"goals2\",goals2);\n\nvar time = global.get(\"endTime\");\nvar lastGame = global.get(\"gameID\").toString();\n\nif(goals>goals2){\n    global.set(\"winner\",true);\n}\nelse{\n    global.set(\"winner\",false);\n}\n\nreturn msg;",
       "outputs": 1,
       "noerr": 0,
       "x": 3220,
       "y": 360,
       "wires": [
         [
-          "97410f09.4fc37"
+          "97410f09.4fc37",
+          "3718a0dc.4e7b8"
         ]
       ]
     },
@@ -4058,5 +4060,17 @@
           "8cb0f205.fef9e"
         ]
       ]
+    },
+    {
+      "id": "3718a0dc.4e7b8",
+      "type": "debug",
+      "z": "eb3b002.f14c5",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 3416.5,
+      "y": 282,
+      "wires": []
     }
 ]
