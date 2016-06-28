@@ -23,6 +23,7 @@ var http    = require('http'),
 
 // Create an Express app
 var app = express();
+require("cf-deployment-tracker-client").track(); 
 
 var cfenv = require("cfenv");
 var appEnv = cfenv.getAppEnv();
