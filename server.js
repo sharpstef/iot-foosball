@@ -103,7 +103,7 @@ app.get('/login2',function(req, res) {
 	res.redirect('/login/twitter');
 });
 
-app.get('/login/twitter',passport.authenticate('twitter'));
+app.get('/login/twitter',passport.authenticate('twitter', { forceLogin: true }));
 
 app.get('/login/twitter/return', 
   passport.authenticate('twitter', { failureRedirect: '/' }),
