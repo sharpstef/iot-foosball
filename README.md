@@ -1,3 +1,5 @@
+**NOTE: This repo is currently in a freeze. We are working to take the code out of Node-RED and place it purely in Node.js with enhanced user accounts and changing logic to reduce latency.
+
 # FoosBuzz
 A Raspberry Pi wired Foosball table that uses the Watson IoT Foundation, Cloudant, and Node-RED
 
